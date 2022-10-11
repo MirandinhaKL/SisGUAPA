@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SisGUAPA.UI.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="entidadeViewSource" />
+        <CollectionViewSource x:Key="entidadeAnimalSource" Source="{Binding Animais, Source={StaticResource entidadeViewSource}}"/>
+    </Window.Resources>
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="144*"/>
+            <ColumnDefinition Width="541*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="75*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="entidadeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" 
+              ItemsSource="{Binding Source={StaticResource entidadeViewSource}}"
+              Margin="13,13,43,229" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.ColumnSpan="4">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding EntidadeId}" Header="Entidade Id" Width="SizeToHeader"
+                                IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Nome}" Header="Nome" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="animalDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" 
+              ItemsSource="{Binding Source={StaticResource entidadeAnimalSource}}"
+              Margin="13,205,43,108" RowDetailsVisibilityMode="VisibleWhenSelected" RenderTransformOrigin="0.488,0.2511" Grid.ColumnSpan="4">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding EntidadeId}" Header="Entidade Id" Width="SizeToHeader" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding AnimalId}" Header="Animal Id" Width="SizeToHeader" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Nome}" Header="Nome" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Salvar" HorizontalAlignment="Left" Margin="156,327,0,87" Height="20" Width="124" Click="Button_Click" Grid.Column="1" />
     </Grid>
 </Window>

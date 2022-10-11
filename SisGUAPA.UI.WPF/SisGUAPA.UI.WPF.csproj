@@ -7,4 +7,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SisGUAPA.Infra.Data\SisGUAPA.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>
