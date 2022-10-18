@@ -8,7 +8,7 @@ namespace SisGUAPA.Domain.Entities
 
         //public string Identificacao { get; set; }
 
-        public string Nome { get; set; }
+        public string Nome { get; set; } = string.Empty;
 
         //public DateTime DataNascimento { get; set; }
 

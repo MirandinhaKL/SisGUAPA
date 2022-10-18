@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SisGUAPA.Application.Services.Entidade;
 using SisGUAPA.Infra.Data;
 using System;
 using System.Collections.Generic;
@@ -23,34 +24,31 @@ namespace SisGUAPA.UI.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly AnimalContext _animalContext = new AnimalContext();
-        private CollectionViewSource entidadeViewSource;
+        private readonly SisGUAPAContext _sisguapaContext = new SisGUAPAContext();
+        private readonly IEntidadeService _entidadeService;
 
-        public MainWindow()
+        public MainWindow(IEntidadeService entidadeService)
         {
             InitializeComponent();
-            entidadeViewSource = (CollectionViewSource)FindResource(nameof(entidadeViewSource));
+            _entidadeService = entidadeService;
         }
-
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            _animalContext.Database.EnsureCreated();
-            _animalContext.Entidades.Load();
-            entidadeViewSource.Source = _animalContext.Entidades.Local.ToObservableCollection();
+            //_sisguapaContext.Database.EnsureCreated();
+            //_sisguapaContext.Entidades.Load();
+            //entidadeViewSource.Source = _sisguapaContext.Entidades.Local.ToObservableCollection();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnLogar_Click(object sender, RoutedEventArgs e)
         {
-            _animalContext.SaveChanges();
-            entidadeDataGrid.Items.Refresh();
-            animalDataGrid.Items.Refresh();
+
         }
 
-        protected override void OnClosing(CancelEventArgs e)
+        private void btnCriarEntidade_Click(object sender, RoutedEventArgs e)
         {
-            _animalContext.Dispose();
-            base.OnClosing(e);
+            var entidadeWindow = new CadastroEntidadeWindow(_entidadeService);
+            entidadeWindow.ShowDialog();
         }
     }
 }

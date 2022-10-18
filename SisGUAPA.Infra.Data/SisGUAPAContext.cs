@@ -3,10 +3,10 @@ using SisGUAPA.Domain.Entities;
 
 namespace SisGUAPA.Infra.Data
 {
-    public class AnimalContext : DbContext
+    public class SisGUAPAContext : DbContext
     {
-        public DbSet<Animal> Animais { get; set; }
-        public DbSet<Entidade> Entidades { get; set; }
+        public DbSet<Entidade> Entidades => Set<Entidade>();
+        public DbSet<Usuario> Usuarios => Set<Usuario>();
 
         protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)
