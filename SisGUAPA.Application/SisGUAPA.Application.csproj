@@ -10,4 +10,13 @@
     <Folder Include="Validation\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SisGUAPA.Domain\SisGUAPA.Domain.csproj" />
+    <ProjectReference Include="..\SisGUAPA.Infra.Data\SisGUAPA.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>

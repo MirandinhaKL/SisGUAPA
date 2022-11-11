@@ -1,8 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SisGUAPA.Application.Services;
 using SisGUAPA.Application.Services.Entidade;
+using SisGUAPA.Domain.Entities;
+using SisGUAPA.Infra.Data;
 using System.Windows;
-
 namespace SisGUAPA.UI.WPF;
 
 /// <summary>
@@ -21,12 +25,21 @@ public partial class App : System.Windows.Application
         AppHost = Host.CreateDefaultBuilder()
             .ConfigureServices((hostContext, services) =>
             {
-                // Windows
-                services.AddSingleton<MainWindow>();
-                //services.AddTransient<CadastroEntidadeWindow>();
+                //Configurações
+                services.AddDbContext<SisGUAPAContext>(options =>
+                {
+                    options.UseSqlite("Data Source=sisguapa_sqlite.db");
+                });
 
-                //Serviços
-                services.AddTransient<IEntidadeService, EntidadeService>();  
+                // Telas
+                services.AddSingleton<MainWindow>();
+                services.AddTransient<CadastroEntidadeWindow>();
+
+                //Serviços entidades
+                services.AddTransient<IEntidadeService, EntidadeService>();
+
+                // Serviços validatores
+                services.AddScoped<IValidator<Entidade>, EntidadeValidator>();
             })
             .Build();
     }

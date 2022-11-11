@@ -4,7 +4,7 @@ namespace SisGUAPA.Domain.Entities
 {
     public class Animal
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         //public string Identificacao { get; set; }
 
