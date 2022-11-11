@@ -5,11 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SisGUAPA.UI.WPF"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Window.Resources>
 
     </Window.Resources>
     <Grid>
+        <materialDesign:Card Padding="32" Margin="16">
+            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">My First Material Design App</TextBlock>
+        </materialDesign:Card>
         <Button x:Name="btnLogar" Content="Acessar" HorizontalAlignment="Left" Margin="277,239,0,0" VerticalAlignment="Top" Width="76" Height="27" Click="btnLogar_Click"/>
         <Label x:Name="lblEmail" Content="E-mail" HorizontalAlignment="Left" Margin="195,154,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblSenha" Content="Senha" HorizontalAlignment="Left" Margin="195,199,0,0" VerticalAlignment="Top"/>
@@ -17,6 +28,4 @@
         <PasswordBox x:Name="passBoxSenha" HorizontalAlignment="Left" Margin="255,0,0,0" VerticalAlignment="Center" Width="120"/>
         <Button x:Name="btnCriarEntidade" Content="Novo" HorizontalAlignment="Left" Margin="216,288,0,0" VerticalAlignment="Top" Width="45" Click="btnCriarEntidade_Click"/>
     </Grid>
-
-
 </Window>
