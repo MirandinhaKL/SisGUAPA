@@ -24,7 +24,6 @@ namespace SisGUAPA.UI.WPF
         {
             _dataBaseContext.Database.EnsureCreated();
             _dataBaseContext.Entidades.Load();
-            //entidadeViewSource.Source = _sisguapaContext.Entidades.Local.ToObservableCollection();
         }
 
         private void btnLogar_Click(object sender, RoutedEventArgs e)

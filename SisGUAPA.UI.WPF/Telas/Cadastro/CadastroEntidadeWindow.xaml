@@ -3,35 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SisGUAPA.UI.WPF"
         mc:Ignorable="d"
-        Title="Cadastro da Entidade" Height="450" Width="400" Loaded="CadastroEntidade_Loaded">
-    <Grid >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200*" />
-            <ColumnDefinition Width="11*"/>
-            <ColumnDefinition Width="189*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions >
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="8*"/>
-        </Grid.RowDefinitions>
-        <Label x:Name="lblNome" Grid.Column="0" Content="Nome da entidade" HorizontalAlignment="Left" Margin="91,27,0,0" Grid.RowSpan="2" />
-        <Label x:Name="lblEmail" Grid.Column="0" Grid.Row="1" Content="E-mail da entidade" HorizontalAlignment="Left" Margin="91,27,0,0" Grid.RowSpan="2" />
-        <Label x:Name="lblTipoEntidade" Grid.Column="0" Grid.Row="2" Content="Tipo da entidade" HorizontalAlignment="Left" Margin="100,27,0,27" Grid.RowSpan="3" />
-        <Label x:Name="lblSenha" Grid.Column="0" Grid.Row="4" Content="Senha" HorizontalAlignment="Left" Margin="158,0,0,27" Grid.RowSpan="2" />
-        <Label x:Name="lblSenhaRepeticao" Grid.Column="0" Grid.Row="5" Content="Repetição da senha" HorizontalAlignment="Left" Margin="87,0,0,54" Grid.RowSpan="2" />
-        <TextBox x:Name="txtNome" Grid.Column="1" Grid.Row="1" Width="150" HorizontalAlignment="Left" Height="18" Grid.ColumnSpan="2" Margin="0,5,0,4"/>
-        <TextBox x:Name="txtEmail" Grid.Column="1" Grid.Row="2" Width="150" HorizontalAlignment="Left" Height="18" Grid.ColumnSpan="2" Margin="0,5,0,4"/>
-        <ComboBox x:Name="cbTipoEntidade" Grid.Row="3" Grid.Column="1" Height="18" Width="150" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="0,5,0,5" />
-        <PasswordBox x:Name="pbSenha" Grid.Row="4" Grid.Column="1" Height="18" Width="150" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="0,4,0,5" />
-        <PasswordBox x:Name="pbSenhaRepeticao" Grid.Row="5" Grid.Column="1" Height="18" Width="150" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="0,4,0,5" />
-        <Button Content="Cadastrar" x:Name="btnCadastrar" Grid.Column="1" Grid.Row="6" Width="150" Height="25" HorizontalAlignment="Left" AutomationProperties.Name="Cadastrar" Click="btnCadastrar_Click" Grid.ColumnSpan="2" Margin="0,14,0,15"/>
-    </Grid>
+        Title="Cadastro da Entidade" Height="450" Width="400" Loaded="CadastroEntidade_Loaded"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:components="clr-namespace:SisGUAPA.UI.WPF.Components"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <components:HeaderNew Title="Nova Entidade">
+         
+    </components:HeaderNew>
+  
 </Window>
