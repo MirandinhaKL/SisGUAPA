@@ -34,17 +34,17 @@ namespace SisGUAPA.UI.WPF
                 var entidade = new Entidade()
                 {
                     DataCadastro = DateTime.Now,
-                    //Email = txtEmail.Text,
-                    //Nome = txtNome.Text,
-                    //Senha = pbSenha.Password,
-                    //TipoEntidade = cbTipoEntidade.SelectedIndex
+                    Email = txtEmail.Text,
+                    Nome = txtNome.Text,
+                    Senha = pbSenha.Password,
+                    TipoEntidade = cbTipoEntidade.SelectedIndex
                 };
 
-                //if (!pbSenha.Password.Equals(pbSenhaRepeticao.Password))
-                //{
-                //    MessageBox.Show("A senha e a repetição não coincidem.");
-                //    return;
-                //}
+                if (!pbSenha.Password.Equals(pbSenhaRepeticao.Password))
+                {
+                    MessageBox.Show("A senha e a repetição não coincidem.");
+                    return;
+                }
 
                 var validator = _entidadeService.ValidacaoCamposObrigatorios(entidade);
                 if (validator.IsValid)
@@ -79,8 +79,8 @@ namespace SisGUAPA.UI.WPF
 
         private void CarregarTiposEntidade()
         {
-            //foreach (var item in _tiposEntidade)
-                //cbTipoEntidade.Items.Insert(item.Key, item.Value);
+            foreach (var item in _tiposEntidade)
+                cbTipoEntidade.Items.Insert(item.Key, item.Value);
         }
     }
 }

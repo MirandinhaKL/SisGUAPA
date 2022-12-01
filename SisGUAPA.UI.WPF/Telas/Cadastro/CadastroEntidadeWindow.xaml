@@ -14,8 +14,39 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
-    <components:HeaderNew Title="Nova Entidade">
-         
-    </components:HeaderNew>
-  
+    <Grid >
+        <components:HeaderNew Title="Nova Entidade" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"/>
+        <materialDesign:Card Padding="32" Margin="5,50,5,5" />
+        <Grid Margin="5,50,5,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="160" />
+                <ColumnDefinition Width="240" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="lblNome" Grid.Column="0" Grid.Row="0" Content="Nome da entidade" HorizontalAlignment="Right" Margin="0,27,5,0"  />
+            <TextBox x:Name="txtNome" Grid.Column="1" Grid.Row="0" MaxLength="255" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+
+            <Label x:Name="lblEmail" Grid.Column="0" Grid.Row="1" Content="E-mail da entidade" HorizontalAlignment="Right" Margin="0,27,5,0" />
+            <TextBox x:Name="txtEmail" Grid.Column="1" Grid.Row="1" MaxLength="255" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Grid.ColumnSpan="2" Margin="0,27,0,0"/>
+
+            <Label x:Name="lblTipoEntidade" Grid.Column="0" Grid.Row="2" Content="Tipo da entidade" HorizontalAlignment="Right" Margin="0,27,5,0" />
+            <ComboBox x:Name="cbTipoEntidade" Grid.Column="1" Grid.Row="2" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,27,0,0" />
+
+            <Label x:Name="lblSenha" Grid.Column="0" Grid.Row="3" Content="Senha" HorizontalAlignment="Right" Margin="0,27,5,0" Grid.RowSpan="2" />
+            <PasswordBox x:Name="pbSenha" Grid.Column="1" Grid.Row="3" MaxLength="255" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,27,0,0" />
+
+            <Label x:Name="lblSenhaRepeticao" Grid.Column="0" Grid.Row="4" Content="Repetição da senha" HorizontalAlignment="Right" Margin="0,27,5,0" />
+            <PasswordBox x:Name="pbSenhaRepeticao" Grid.Column="1" Grid.Row="4" MaxLength="255" Width="150"  VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,27,0,0" />
+
+            <Button Content="Cadastrar" x:Name="btnCadastrar" Grid.Column="1" Grid.Row="5" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Left" AutomationProperties.Name="Cadastrar" Click="btnCadastrar_Click" Margin="0,0,0,0"/>
+        </Grid>
+    </Grid>
+
 </Window>
