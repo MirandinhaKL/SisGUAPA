@@ -1,5 +1,4 @@
 ﻿using SisGUAPA.Application.Services.Entidade;
-using SisGUAPA.Application.Util;
 using SisGUAPA.Domain.Entities;
 using SisGUAPA.Infra.Data;
 using SisGUAPA.UI.WPF.Uteis;

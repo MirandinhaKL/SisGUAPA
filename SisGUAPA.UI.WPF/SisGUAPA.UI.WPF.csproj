@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
@@ -22,16 +22,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SisGUAPA.Application\SisGUAPA.Application.csproj" />
-    <ProjectReference Include="..\SisGUAPA.Infra.Data\SisGUAPA.Infra.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <SplashScreen Include="SplashScreen1.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Telas\Consulta\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SisGUAPA.Application\SisGUAPA.Application.csproj" />
   </ItemGroup>
 
 </Project>
