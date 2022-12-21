@@ -4,6 +4,7 @@ using SisGUAPA.Application.Util;
 using SisGUAPA.Infra.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using domain = SisGUAPA.Domain.Entities;
 
 namespace SisGUAPA.Application.Services.Entidade
@@ -48,7 +49,8 @@ namespace SisGUAPA.Application.Services.Entidade
             return saved;
         }
 
-        public ValidationResult ValidacaoCamposObrigatorios(domain.Entidade entidade)
-            => _validator.Validate(entidade);
+
+        FluentValidation.Results.ValidationResult IEntidadeService.ValidacaoCamposObrigatorios(domain.Entidade entidade)
+          => _validator.Validate(entidade);
     }
 }

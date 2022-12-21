@@ -7,6 +7,7 @@ namespace SisGUAPA.Domain.Entities
     public class Entidade
     {
 
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "O nome da entidade deve ser informado.")]
@@ -28,9 +29,9 @@ namespace SisGUAPA.Domain.Entities
         
         public DateTime DataCadastro { get; set; }
 
-        //[MaxLength(9)]
-        //[Column(TypeName = "varchar(9)")]
-        //public string CEP { get; set; }
+        [MaxLength(9)]
+        [Column(TypeName = "varchar(9)")]
+        public string CEP { get; set; } = string.Empty;
 
         //public virtual ICollection<Animal> Animais { get; private set; } = new ObservableCollection<Animal>();
 

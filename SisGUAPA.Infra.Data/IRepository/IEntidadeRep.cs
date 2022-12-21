@@ -4,7 +4,7 @@ using System;
 
 namespace SisGUAPA.Infra.Data.Repository.Interfaces
 {
-    internal interface IEntidadeRep : IBaseRepository<Entidade>, IDisposable
+    public interface IEntidadeRep : IBaseRepository<Entidade>, IDisposable
     {
         
     }

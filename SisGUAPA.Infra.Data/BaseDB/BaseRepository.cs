@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SisGUAPA.Infra.Data.BaseDB
 {
@@ -19,23 +16,23 @@ namespace SisGUAPA.Infra.Data.BaseDB
             _context = unityOfWork as SisGUAPAContext;
         }
 
-        public T Find(int id)
+        public T GetById(int id)
         {
             return _context.Set<T>().Find(id);
         }
 
-        public IQueryable<T> List()
+        public IQueryable<T> GetAll()
         {
             return _context.Set<T>();
         }
 
-        public bool Add(T item)
+        public bool Insert(T item)
         {
             var saved = _context.Set<T>().Add(item);
             return saved.State == EntityState.Added;
         }
 
-        public void Remove(T item)
+        public void Delete(T item)
         {
             _context.Set<T>().Remove(item);
         }

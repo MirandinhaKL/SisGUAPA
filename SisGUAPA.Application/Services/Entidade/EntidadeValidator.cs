@@ -13,7 +13,7 @@ namespace SisGUAPA.Application.Services.Entidade
             RuleFor(x => x.Senha).NotEmpty()
                 .WithMessage("A senha para acesso ao sistema deve ser informada.");
 
-            RuleFor(x => x.Email).NotEmpty(). EmailAddress()
+            RuleFor(x => x.Email).NotEmpty().EmailAddress()
                 .WithMessage("O e-mail não é válido.");
         }
     }

@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisGUAPA.Infra.Data", "SisG
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisGUAPA.UI.WPF", "SisGUAPA.UI.WPF\SisGUAPA.UI.WPF.csproj", "{8DBCDD28-A696-4F17-854D-FAE17A4362E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisGUAPA.Test", "SisGUAPA.Test\SisGUAPA.Test.csproj", "{36382925-5551-47DC-875E-51CA1D8EC77E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisGUAPA.Tests", "SisGUAPA.Tests\SisGUAPA.Tests.csproj", "{A9F22D57-6AA8-43B7-B8AD-832B55627A74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{8DBCDD28-A696-4F17-854D-FAE17A4362E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DBCDD28-A696-4F17-854D-FAE17A4362E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DBCDD28-A696-4F17-854D-FAE17A4362E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36382925-5551-47DC-875E-51CA1D8EC77E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36382925-5551-47DC-875E-51CA1D8EC77E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36382925-5551-47DC-875E-51CA1D8EC77E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36382925-5551-47DC-875E-51CA1D8EC77E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9F22D57-6AA8-43B7-B8AD-832B55627A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9F22D57-6AA8-43B7-B8AD-832B55627A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9F22D57-6AA8-43B7-B8AD-832B55627A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9F22D57-6AA8-43B7-B8AD-832B55627A74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

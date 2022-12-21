@@ -17,23 +17,23 @@ namespace SisGUAPA.Application.Services
 
         public bool Save(T item)
         {
-            _repository.Add(item);
+            _repository.Insert(item);
             return _unitOfWork.Save();
         }
 
         public T Find(int id)
         {
-            return _repository.Find(id);
+            return _repository.GetById(id);
         }
 
         public IQueryable<T> List()
         {
-            return _repository.List();
+            return _repository.GetAll();
         }
 
         public void Remove(T item)
         {
-            _repository.Remove(item);
+            _repository.Delete(item);
             _unitOfWork.Save();
         }
 

@@ -2,16 +2,16 @@
 
 namespace SisGUAPA.Infra.Data.BaseDB
 {
-    public interface IBaseRepository<T> where T : class
+    public interface IBaseRepository<TEntity> where TEntity : class
     {
-        T Find(int id);
+        bool Insert(TEntity item);
+       
+        void Delete(TEntity item);
 
-        IQueryable<T> List();
+        IQueryable<TEntity> GetAll();
 
-        bool Add(T item);
+        TEntity GetById(int id);
 
-        void Remove(T item);
-
-        void Update(T item);
+        void Update(TEntity item);
     }
 }

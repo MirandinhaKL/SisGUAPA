@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SisGUAPA.Infra.Data.BaseDB
 {
-    public interface IUnityOfWork
+    /*
+     * A unidade de trabalho representa uma transação quando usada em camadas de dados. 
+     * Normalmente, a unidade de trabalho reverterá a transação se SaveChanges() não tiver sido invocado antes de ser descartado. 
+     */
+    public interface IUnityOfWork : IDisposable
     {
         bool Save();
     }
