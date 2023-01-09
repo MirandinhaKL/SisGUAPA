@@ -17,7 +17,7 @@
     <Grid >
         <components:HeaderNew Title="Nova Entidade" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"/>
         <materialDesign:Card Padding="32" Margin="5,50,5,5" />
-        <Grid Margin="5,50,5,5">
+        <Grid Margin="5,50,5,5" Cursor="Hand">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="160" />
                 <ColumnDefinition Width="240" />
@@ -30,6 +30,7 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="70"/>
             </Grid.RowDefinitions>
+  
             <Label x:Name="lblNome" Grid.Column="0" Grid.Row="0" Content="Nome da entidade" HorizontalAlignment="Right" Margin="0,27,5,0"  />
             <TextBox x:Name="txtNome" Grid.Column="1" Grid.Row="0" MaxLength="255" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
 

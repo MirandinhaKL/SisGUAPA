@@ -1,9 +1,13 @@
-﻿using SisGUAPA.Application.Services.Entidade;
+﻿using MaterialDesignThemes.Wpf;
+using SisGUAPA.Application.Services.Entidade;
 using SisGUAPA.Domain.Entities;
 using SisGUAPA.Infra.Data;
 using SisGUAPA.UI.WPF.Uteis;
+using SisGUAPA.UI.WPF.Windows.Messages;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Windows;
 
 namespace SisGUAPA.UI.WPF
@@ -30,6 +34,12 @@ namespace SisGUAPA.UI.WPF
         {
             try
             {
+                if (!pbSenha.Password.Equals(pbSenhaRepeticao.Password))
+                {
+                    var message = "A senha e a repetição da senha não coincidem.";
+                    new RoutineMessage(message, MessageType.Error, MessageButtons.Ok).ShowDialog();
+                }
+
                 var entidade = new Entidade()
                 {
                     DataCadastro = DateTime.Now,
@@ -39,29 +49,31 @@ namespace SisGUAPA.UI.WPF
                     TipoEntidade = cbTipoEntidade.SelectedIndex
                 };
 
-                if (!pbSenha.Password.Equals(pbSenhaRepeticao.Password))
+                var validator = _entidadeService.MandatoryFieldValidation(entidade);
+
+                if (!validator.IsValid)
                 {
-                    MessageBox.Show("A senha e a repetição não coincidem.");
+                    var stringBuilder = new StringBuilder().Append("Não foi possível salvar os dados, pois:");
+                    
+                    foreach (var item in validator.Errors)
+                    {
+                        stringBuilder.Append($"- {item.ErrorMessage}\n");
+                    }
+
+                    new RoutineMessage(stringBuilder.ToString(), MessageType.Error, MessageButtons.Ok).ShowDialog();
                     return;
                 }
-
-                var validator = _entidadeService.ValidacaoCamposObrigatorios(entidade);
-                if (validator.IsValid)
+                 
+                var savedResult = _entidadeService.SaveEntidade(entidade);
+                if (string.IsNullOrEmpty(savedResult))
                 {
-                    if (_entidadeService.SalvarEntidade(entidade))
-                    {
-                        FuncoesGeraisFront.MensagemCRUDSucesso(EnumeracoesFront.AcaoCRUD.Salvar, EnumeracoesFront.MensagemCRUDTextoPassado.Salvar) ;
-                        this.Close();
-                    }
-                    else
-                    {
-                        FuncoesGeraisFront.MensagemCRUDFalha(EnumeracoesFront.AcaoCRUD.Salvar, EnumeracoesFront.MensagemCRUDTextoVerbo.Salvar);
-                        // TODO: salvar erro.
-                    }
+                    UtilFront.SuccessMessageCRUD(EnumerationsFront.MensagemCRUDTextoPassado.Salvar);
+                    this.Close();
                 }
                 else
                 {
-                    var erros = validator.Errors;
+                    UtilFront.FailMessageCRUD(EnumerationsFront.MensagemCRUDTextoVerbo.Salvar);
+                    // TODO: salvar erro.
                 }
             }
             catch (Exception ex)

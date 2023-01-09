@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Telas\Consulta\" />
+    <Folder Include="Windows\Consulta\" />
   </ItemGroup>
 
   <ItemGroup>

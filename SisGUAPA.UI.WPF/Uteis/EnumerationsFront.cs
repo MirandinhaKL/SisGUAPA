@@ -2,7 +2,7 @@
 
 namespace SisGUAPA.UI.WPF.Uteis
 {
-    public class EnumeracoesFront
+    public class EnumerationsFront
     {
         /// <summary>
         ///Texto (verbo conjugado) exibido ao usuário referente as operações CRUD dos dados.

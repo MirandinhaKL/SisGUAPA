@@ -1,10 +1,9 @@
 ﻿using FluentValidation;
-using FluentValidation.Results;
 using SisGUAPA.Application.Util;
 using SisGUAPA.Infra.Data;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using domain = SisGUAPA.Domain.Entities;
 
 namespace SisGUAPA.Application.Services.Entidade
@@ -38,19 +37,22 @@ namespace SisGUAPA.Application.Services.Entidade
             return entidades;
         }
 
-        public bool SalvarEntidade(domain.Entidade entidade)
+        public string SaveEntidade(domain.Entidade entidade)
         {
+            if (EmailAlreadyUsed(entidade.Email))
+                return "E-mail já cadastrado no sistema.";
+            
             var saved = this.Save(entidade);
             if (!saved)
-            {
-                //TODO: Adiciona erro em arquivo ou no banco?
-            }
+                return "Falha ao salvar os dados da entidade";
 
-            return saved;
+            return string.Empty;
         }
 
-
-        FluentValidation.Results.ValidationResult IEntidadeService.ValidacaoCamposObrigatorios(domain.Entidade entidade)
+        FluentValidation.Results.ValidationResult IEntidadeService.MandatoryFieldValidation(domain.Entidade entidade)
           => _validator.Validate(entidade);
+
+        public bool EmailAlreadyUsed(string email)
+            =>  _dataBaseContext.Entidades.Where(ent => ent.Email.ToLower().Equals(email.ToLower())).Any();
     }
 }

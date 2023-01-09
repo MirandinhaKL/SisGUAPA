@@ -8,11 +8,9 @@ namespace SisGUAPA.Application.Services.Entidade
     public interface IEntidadeService
     {
         Dictionary<int, string> GetTiposEntidade();
-
-        bool SalvarEntidade(domain.Entidade entidade);
-
+        string SaveEntidade(domain.Entidade entidade);
+        bool EmailAlreadyUsed(string email);
         domain.Entidade GetEntidade(Guid Id);
-
-        ValidationResult ValidacaoCamposObrigatorios(domain.Entidade entidade);
+        ValidationResult MandatoryFieldValidation(domain.Entidade entidade);
     }
 }
