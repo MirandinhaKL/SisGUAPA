@@ -39,7 +39,7 @@ public partial class App : System.Windows.Application
                 services.AddTransient<IEntidadeService, EntidadeService>();
 
                 // Serviços validatores
-                services.AddScoped<IValidator<Entidade>, EntidadeValidator>();
+                services.AddScoped<IValidator<Entity>, EntidadeValidator>();
             })
             .Build();
     }

@@ -4,11 +4,11 @@ namespace SisGUAPA.Tests.ObjectsToTest;
 
 public interface IEntidadeData
 {
-    Entidade[] GetEntidadesValidas();
-    Entidade GetEntidadeValida1();
-    Entidade GetEntidadeValida2();
-    Entidade GetEntidadeValida3();
-    Entidade GetEntidadeSemNome();
-    Entidade GetEntidadeSemEmail();
-    Entidade GetEntidadeSemSenha();
+    Entity[] GetEntidadesValidas();
+    Entity GetEntidadeValida1();
+    Entity GetEntidadeValida2();
+    Entity GetEntidadeValida3();
+    Entity GetEntidadeSemNome();
+    Entity GetEntidadeSemEmail();
+    Entity GetEntidadeSemSenha();
 }

@@ -21,9 +21,9 @@ namespace SisGUAPA.Tests.ObjectsToTest
         private readonly string EMAIL_3 = "farroupilha@yahoo.com.br";
         private readonly string SENHA_3 = "F@rroup.123";
 
-        public Entidade GetEntidadeValida1()
+        public Entity GetEntidadeValida1()
         {
-            return new Entidade()
+            return new Entity()
             {
                 Id = ID_1,
                 Nome = NOME_1,
@@ -36,9 +36,9 @@ namespace SisGUAPA.Tests.ObjectsToTest
             };
         }
 
-        public Entidade GetEntidadeValida2()
+        public Entity GetEntidadeValida2()
         {
-            return new Entidade()
+            return new Entity()
             {
                 Id = ID_2,
                 Nome = NOME_2,
@@ -47,9 +47,9 @@ namespace SisGUAPA.Tests.ObjectsToTest
             };
         }
 
-        public Entidade GetEntidadeValida3()
+        public Entity GetEntidadeValida3()
         {
-            return new Entidade()
+            return new Entity()
             {
                 Id = ID_3,
                 Nome = NOME_3,
@@ -58,9 +58,9 @@ namespace SisGUAPA.Tests.ObjectsToTest
             };
         }
 
-        public Entidade[] GetEntidadesValidas()
+        public Entity[] GetEntidadesValidas()
         {
-            return new Entidade[]
+            return new Entity[]
             {
                 GetEntidadeValida1(),
                 GetEntidadeValida2(),
@@ -68,9 +68,9 @@ namespace SisGUAPA.Tests.ObjectsToTest
             };
         }
 
-        public Entidade GetEntidadeSemNome()
+        public Entity GetEntidadeSemNome()
         {
-            return new Entidade()
+            return new Entity()
             {
                 Nome = string.Empty,
                 Email = EMAIL_1,
@@ -78,9 +78,9 @@ namespace SisGUAPA.Tests.ObjectsToTest
             };
         }
 
-        public Entidade GetEntidadeSemEmail()
+        public Entity GetEntidadeSemEmail()
         {
-            return new Entidade()
+            return new Entity()
             {
                 Nome = NOME_1,
                 Email = String.Empty,
@@ -88,9 +88,9 @@ namespace SisGUAPA.Tests.ObjectsToTest
             };
         }
 
-        public Entidade GetEntidadeSemSenha()
+        public Entity GetEntidadeSemSenha()
         {
-            return new Entidade()
+            return new Entity()
             {
                 Nome = NOME_1,
                 Email = EMAIL_1,

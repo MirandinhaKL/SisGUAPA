@@ -18,7 +18,7 @@ namespace SisGUAPA.Test.Model
         public void CreateEntidade()
         {
 
-            Mock<IValidator<Entidade>> _validator = new Mock<IValidator<Entidade>>();
+            Mock<IValidator<Entity>> _validator = new Mock<IValidator<Entity>>();
             Mock<SisGUAPAContext> _mockRepo = new Mock<SisGUAPAContext>();
             IEntidadeService _entidadeService = new EntidadeService(_validator.Object, _mockRepo.Object);
 

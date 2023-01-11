@@ -3,7 +3,7 @@ using domain = SisGUAPA.Domain.Entities;
 
 namespace SisGUAPA.Application.Services.Entidade
 {
-    public class EntidadeValidator : AbstractValidator<domain.Entidade>
+    public class EntidadeValidator : AbstractValidator<domain.Entity>
     {
         public EntidadeValidator()
         {

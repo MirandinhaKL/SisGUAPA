@@ -40,7 +40,7 @@ namespace SisGUAPA.UI.WPF
                     new RoutineMessage(message, MessageType.Error, MessageButtons.Ok).ShowDialog();
                 }
 
-                var entidade = new Entidade()
+                var entidade = new Entity()
                 {
                     DataCadastro = DateTime.Now,
                     Email = txtEmail.Text,

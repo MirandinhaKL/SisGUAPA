@@ -1,16 +1,19 @@
-﻿using domain = SisGUAPA.Domain.Entities;
-using System;
+﻿using FluentValidation.Results;
+using SisGUAPA.Domain.Entities;
 using System.Collections.Generic;
-using FluentValidation.Results;
+using domain = SisGUAPA.Domain.Entities;
 
-namespace SisGUAPA.Application.Services.Entidade
+namespace SisGUAPA.Application.Services.Entidade;
+
+/// <summary>
+/// Criado em*: 01/01/23
+/// Última alteração: 10/01/23
+/// </summary>
+public interface IEntidadeService
 {
-    public interface IEntidadeService
-    {
-        Dictionary<int, string> GetTiposEntidade();
-        string SaveEntidade(domain.Entidade entidade);
-        bool EmailAlreadyUsed(string email);
-        domain.Entidade GetEntidade(Guid Id);
-        ValidationResult MandatoryFieldValidation(domain.Entidade entidade);
-    }
+    Dictionary<int, string> GetTiposEntidade();
+    string SaveEntidade(domain.Entity entidade);
+    bool EmailAlreadyUsed(string email);
+    Entity GetEntidade(int Id);
+    ValidationResult MandatoryFieldValidation(domain.Entity entidade);
 }

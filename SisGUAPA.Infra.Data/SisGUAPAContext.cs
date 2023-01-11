@@ -11,8 +11,8 @@ namespace SisGUAPA.Infra.Data
         // Adicionado por causa do Mock do construtor dessa clase.
         public SisGUAPAContext(){}
 
-        public virtual DbSet<Entidade> Entidades => Set<Entidade>();
-        public virtual DbSet<Usuario> Usuarios => Set<Usuario>();
+        public virtual DbSet<Entity> Entitties => Set<Entity>();
+        public virtual DbSet<User> Users => Set<User>();
 
         public bool Save()
         {

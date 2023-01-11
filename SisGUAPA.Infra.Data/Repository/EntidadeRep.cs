@@ -4,7 +4,7 @@ using SisGUAPA.Infra.Data.Repository.Interfaces;
 
 namespace SisGUAPA.Infra.Data.Repository
 {
-    public class EntidadeRep : BaseRepository<Entidade>, IEntidadeRep
+    public class EntidadeRep : BaseRepository<Entity>, IEntidadeRep
     {
         private readonly IUnityOfWork _unitOfWork;
 

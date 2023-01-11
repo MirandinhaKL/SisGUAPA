@@ -23,7 +23,7 @@ namespace SisGUAPA.UI.WPF
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _dataBaseContext.Database.EnsureCreated();
-            _dataBaseContext.Entidades.Load();
+            _dataBaseContext.Entitties.Load();
         }
 
         private void btnLogar_Click(object sender, RoutedEventArgs e)

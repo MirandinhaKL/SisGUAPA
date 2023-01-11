@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SisGUAPA.Domain.Entities
 {
-    public class Entidade
+    public class Entity
     {
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]

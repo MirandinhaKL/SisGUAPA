@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SisGUAPA.Domain.Entities
 {
-    public class Usuario
+    public class User
     {
         #region Propriedades
         public int Id { get; set; }

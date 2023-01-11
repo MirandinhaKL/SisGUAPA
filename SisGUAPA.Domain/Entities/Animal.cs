@@ -32,7 +32,7 @@ namespace SisGUAPA.Domain.Entities
 
 
         public Guid EntidadeId { get; set; }
-        public virtual Entidade Entidade { get; set; }
+        public virtual Entity Entidade { get; set; }
 
     }
 }
