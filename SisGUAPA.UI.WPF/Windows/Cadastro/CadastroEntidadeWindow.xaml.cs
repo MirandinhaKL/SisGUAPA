@@ -1,4 +1,5 @@
 ﻿using MaterialDesignThemes.Wpf;
+using SisGUAPA.Application.Logs;
 using SisGUAPA.Application.Services.Entidade;
 using SisGUAPA.Domain.Entities;
 using SisGUAPA.Infra.Data;
@@ -38,9 +39,10 @@ namespace SisGUAPA.UI.WPF
                 {
                     var message = "A senha e a repetição da senha não coincidem.";
                     new RoutineMessage(message, MessageType.Error, MessageButtons.Ok).ShowDialog();
+                    return;
                 }
 
-                var entidade = new Entity()
+                var entity = new Entity()
                 {
                     DataCadastro = DateTime.Now,
                     Email = txtEmail.Text,
@@ -49,7 +51,7 @@ namespace SisGUAPA.UI.WPF
                     TipoEntidade = cbTipoEntidade.SelectedIndex
                 };
 
-                var validator = _entidadeService.MandatoryFieldValidation(entidade);
+                var validator = _entidadeService.MandatoryFieldValidation(entity);
 
                 if (!validator.IsValid)
                 {
@@ -63,8 +65,15 @@ namespace SisGUAPA.UI.WPF
                     new RoutineMessage(stringBuilder.ToString(), MessageType.Error, MessageButtons.Ok).ShowDialog();
                     return;
                 }
-                 
-                var savedResult = _entidadeService.SaveEntidade(entidade);
+
+                var emailExists = _entidadeService.EmailAlreadyUsed(entity.Email);
+                if (!string.IsNullOrEmpty(emailExists))
+                {
+                    new RoutineMessage(emailExists, MessageType.Error, MessageButtons.Ok).ShowDialog();
+                    return;
+                }
+
+                var savedResult = _entidadeService.SaveEntidade(entity, "Entidade");
                 if (string.IsNullOrEmpty(savedResult))
                 {
                     UtilFront.SuccessMessageCRUD(EnumerationsFront.MensagemCRUDTextoPassado.Salvar);
@@ -73,14 +82,13 @@ namespace SisGUAPA.UI.WPF
                 else
                 {
                     UtilFront.FailMessageCRUD(EnumerationsFront.MensagemCRUDTextoVerbo.Salvar);
-                    // TODO: salvar erro.
                 }
             }
             catch (Exception ex)
             {
-                // TODO: ver tratativas;
+                _entidadeService.SaveExceptionLog("Excecao gerada ao criar uma nova entidade", ex);
+                UtilFront.SuccessMessageCRUD(EnumerationsFront.MensagemCRUDTextoPassado.Salvar);
             }
-           
         }
 
         private void CadastroEntidade_Loaded(object sender, RoutedEventArgs e)

@@ -26,7 +26,7 @@ namespace SisGUAPA.Test.Model
             var entidade = new EntidadeData().GetEntidadeValida1();
           
             // act
-            var result = _entidadeService.SaveEntidade(entidade);
+            var result = _entidadeService.SaveEntidade(entidade, "");
 
             // assert
             Assert.Empty(result);

@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using SisGUAPA.Application.Logs;
 using SisGUAPA.Application.Util;
 using SisGUAPA.Domain.Entities;
 using SisGUAPA.Infra.Data;
@@ -24,7 +25,7 @@ public class EntidadeService : BaseService<Entity>, IEntidadeService
     }
 
     public Entity GetEntidade(int Id)
-        => _dataBaseContext.Entitties.Where(ent => ent.Id == Id).FirstOrDefault();
+        => _dataBaseContext.Entities.Where(ent => ent.Id == Id).FirstOrDefault();
 
     public Dictionary<int, string> GetTiposEntidade()
     {
@@ -39,21 +40,29 @@ public class EntidadeService : BaseService<Entity>, IEntidadeService
         return entidades;
     }
 
-    public string SaveEntidade(Entity entidade)
+    public string SaveEntidade(Entity entity, string entityName)
     {
-        if (EmailAlreadyUsed(entidade.Email))
-            return "E-mail já cadastrado no sistema.";
-        
-        var saved = this.Save(entidade);
+        var saved = this.Save(entity, entityName);
         if (!saved)
-            return "Falha ao salvar os dados da entidade";
-
+            return "Falha ao salvar os dados da entidade.";
         return string.Empty;
     }
 
     FluentValidation.Results.ValidationResult IEntidadeService.MandatoryFieldValidation(Entity entidade)
       => _validator.Validate(entidade);
 
-    public bool EmailAlreadyUsed(string email)
-        =>  _dataBaseContext.Entitties.Where(ent => ent.Email.ToLower().Equals(email.ToLower())).Any();
+    public string EmailAlreadyUsed(string email)
+    {
+       var emailExists = _dataBaseContext.Entities.Where(
+                    ent => ent.Email.ToLower().Equals(email.ToLower())).Any();
+
+        if (emailExists)
+            return "E-mail já cadastrado no sistema";
+        return String.Empty;
+    }
+
+    public void SaveExceptionLog(string message, Exception exception)
+    {
+        new LogMessage($"{message}. Excecao: {exception.Message}", Enumeracoes.MessageLogType.Error);
+    }
 }

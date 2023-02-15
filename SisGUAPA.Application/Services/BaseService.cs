@@ -1,4 +1,5 @@
-﻿using SisGUAPA.Infra.Data;
+﻿using SisGUAPA.Application.Logs;
+using SisGUAPA.Infra.Data;
 using SisGUAPA.Infra.Data.BaseDB;
 using System.Linq;
 
@@ -15,10 +16,13 @@ namespace SisGUAPA.Application.Services
             _repository = new BaseRepository<T>(_unitOfWork);
         }
 
-        public bool Save(T item)
+        public bool Save(T item, string entity)
         {
             _repository.Insert(item);
-            return _unitOfWork.Save();
+            var successSave = _unitOfWork.Save();
+            if (!successSave)
+                new LogMessage($"Falha ao salvar os dados: {entity}", Util.Enumeracoes.MessageLogType.Error);
+            return successSave;
         }
 
         public T Find(int id)
@@ -34,7 +38,14 @@ namespace SisGUAPA.Application.Services
         public void Remove(T item)
         {
             _repository.Delete(item);
-            _unitOfWork.Save();
+
+            var successSave = _unitOfWork.Save();
+
+            if (!successSave)
+            {
+                new LogMessage($"Dados excluídos: {nameof(item)}",
+                               Util.Enumeracoes.MessageLogType.Information);
+            }
         }
 
         public void Update(T item)
